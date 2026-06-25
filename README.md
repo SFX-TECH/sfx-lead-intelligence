@@ -19,7 +19,7 @@ Two halves of one local-LLM workbench I built to run my own company on:
 
 **1. Context Hub** — a semantic index over **16 of my projects (30,000+ chunks)** with a force-directed **knowledge graph** and an **MCP server**, so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. Fully local embeddings; nothing leaves the machine.
 
-**2. Lead Intelligence Dashboard** — a command-center UI over scanned Southwest-Florida business leads (fed by an upstream n8n pipeline), with **9 local-LLM AI routes**: chat, draft email, audit one-pager, score sanity-check, talking points, vertical playbook, sales script, email template, and discovery questions.
+**2. Lead Intelligence Dashboard** — a command-center UI over scanned Southwest-Florida business leads (fed by an upstream n8n pipeline), with **9 local-LLM AI routes** spanning research, outreach drafting, and sales preparation.
 
 ## The part I'm proudest of: a ground-truth eval harness
 Anyone can make an LLM answer. The hard problem is knowing whether the answer is *right*, at scale, without reading every one by hand. I built a **ground-truth evaluation harness** that grades the system's answers across 20+ query types, which **lifted chat quality from 61% to 99%** and catches regressions before they ship.
