@@ -5,7 +5,7 @@
 > **In plain terms:** This is a private AI setup that runs on my own computer instead of a paid cloud service, so my data stays with me. One half helps me search everything I have built, and the other half helps me study and reach out to new business leads.
 
 ![AI](https://img.shields.io/badge/AI-local%20LLM%20(Ollama)%20%C2%B7%20RAG%20%C2%B7%20MCP-7a5cff)
-![Quality](https://img.shields.io/badge/chat%20quality-61%25%20%E2%86%92%2099%25-2ea44f)
+![Quality](https://img.shields.io/badge/chat%20quality-61%25%20%E2%86%92%2099%25%20(self--measured)-2ea44f)
 ![Stack](https://img.shields.io/badge/stack-Next.js%2015%20%C2%B7%20Ollama%20%C2%B7%20n8n-000000)
 ![Privacy](https://img.shields.io/badge/privacy-100%25%20local-2ea44f)
 ![License](https://img.shields.io/badge/license-proprietary-8a8a8a)
