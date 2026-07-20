@@ -12,7 +12,9 @@
 
 **Source is private by design**: public showcase only.
 
-<!-- drop a screenshot of the knowledge graph or dashboard here: assets/hero.png -->
+![SFX Lead Intelligence Command Center](assets/hero.png)
+
+*The command center: a semantic knowledge graph over every project, a local-LLM hub with an MCP server, and scored leads, all running on local hardware.*
 
 ---
 
