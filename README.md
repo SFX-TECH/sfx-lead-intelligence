@@ -1,6 +1,6 @@
 # SFX Lead Intelligence Command Center
 
-> A local-LLM command center: a semantic hub over 16 of my projects (30,000+ chunks) with a knowledge graph and an MCP server, plus a lead-intelligence dashboard with 9 AI routes. Runs entirely on my own GPU. No cloud.
+> A local-LLM command center: a semantic hub over 21 of my projects (43,006 chunks) with a knowledge graph and an MCP server, plus a lead-intelligence dashboard with 9 AI routes. Runs entirely on my own GPU. No cloud.
 
 > **In plain terms:** This is a private AI setup that runs on my own computer instead of a paid cloud service, so my data stays with me. One half helps me search everything I have built, and the other half helps me study and reach out to new business leads.
 
@@ -24,7 +24,7 @@
 
 Two halves of one local-LLM (AI models that run on my own hardware, not a cloud service) workbench I built to run my own company on:
 
-**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **16 of my projects (30,000+ chunks)** with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
+**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **21 of my projects (43,006 chunks)** with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
 
 **2. Lead Intelligence Dashboard** (one screen that brings the lead information together): a command-center UI over scanned Southwest-Florida business leads (fed by an upstream n8n pipeline), with **9 local-LLM AI routes** spanning research, outreach drafting, and sales preparation.
 
@@ -40,7 +40,7 @@ Anyone can make an LLM answer. The hard problem is knowing whether the answer is
 
 ```mermaid
 flowchart LR
-    P["16 projects · 30k+ chunks"] --> EMB["Local embeddings + index"]
+    P["21 projects · 43k+ chunks"] --> EMB["Local embeddings + index"]
     LEADS["Scanned SWFL leads<br/>(n8n pipeline → Sheet)"] --> DASH
     EMB --> HUB["Context Hub:<br/>semantic search · Q&A · knowledge graph · MCP"]
     EMB --> DASH["Lead dashboard:<br/>9 local-LLM AI routes"]
