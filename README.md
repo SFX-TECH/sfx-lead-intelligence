@@ -1,6 +1,6 @@
 # SFX Lead Intelligence Command Center
 
-> A local-LLM command center: a semantic hub over 21 of my projects (43,006 chunks) with a knowledge graph and an MCP server, plus a lead-intelligence dashboard with 9 AI routes. Runs entirely on my own GPU. No cloud.
+> A local-LLM command center: a semantic hub over 23 of my project roots with a knowledge graph and an MCP server, plus a lead-intelligence dashboard with 9 AI routes. Runs entirely on my own GPU. No cloud.
 
 > **In plain terms:** This is a private AI setup that runs on my own computer instead of a paid cloud service, so my data stays with me. One half helps me search everything I have built, and the other half helps me study and reach out to new business leads.
 
@@ -24,9 +24,11 @@
 
 Two halves of one local-LLM (AI models that run on my own hardware, not a cloud service) workbench I built to run my own company on:
 
-**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **21 of my projects (43,006 chunks)** with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
+**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **23 of my project roots**, held in a local vector store (LanceDB), with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. The index is a clean, deduplicated rebuild that honors each project's ignore rules. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
 
 **2. Lead Intelligence Dashboard** (one screen that brings the lead information together): a command-center UI over scanned Southwest-Florida business leads (fed by an upstream n8n pipeline), with **9 local-LLM AI routes** spanning research, outreach drafting, and sales preparation.
+
+Feeding the command center is a **self-hosted n8n operations mesh** (Docker plus local Ollama) that runs my back office as governed, human-in-the-loop agents: it classifies billing and vendor issues, grounds and lints outreach drafts before they are ever sent, and watches releases, then files action items back into this dashboard. Every model step runs on local hardware, so there is no cloud inference cost, and the agents draft and flag rather than act on their own.
 
 ## The part I'm proudest of: a ground-truth eval harness
 
@@ -40,8 +42,9 @@ Anyone can make an LLM answer. The hard problem is knowing whether the answer is
 
 ```mermaid
 flowchart LR
-    P["21 projects · 43k+ chunks"] --> EMB["Local embeddings + index"]
+    P["23 project roots"] --> EMB["Local embeddings + LanceDB index"]
     LEADS["Scanned SWFL leads<br/>(n8n pipeline → Sheet)"] --> DASH
+    OPS["n8n ops mesh<br/>(local Ollama, human-in-the-loop)"] --> DASH
     EMB --> HUB["Context Hub:<br/>semantic search · Q&A · knowledge graph · MCP"]
     EMB --> DASH["Lead dashboard:<br/>9 local-LLM AI routes"]
     HUB --> EVAL["Ground-truth eval harness<br/>(61% → 99%, gates releases)"]
@@ -56,9 +59,9 @@ flowchart LR
 |---|---|
 | App | Next.js 15 (App Router, TypeScript) |
 | Local LLM | Ollama (qwen3) + nomic-embed, on-GPU, offline |
-| Retrieval | Semantic index (RAG, meaning the AI looks up my own documents before it answers) + force-directed knowledge graph |
+| Retrieval | LanceDB vector store + semantic index (RAG, meaning the AI looks up my own documents before it answers) + force-directed knowledge graph |
 | Interop | Model Context Protocol (MCP) server |
-| Upstream | n8n lead-generation pipeline → Google Sheets |
+| Automation | Self-hosted n8n operations mesh (Docker + local Ollama), governed and human-in-the-loop; upstream lead-generation pipeline → Google Sheets |
 | Quality | Custom ground-truth evaluation harness (20+ query types) |
 
 ## Status
