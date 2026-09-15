@@ -5,7 +5,7 @@
 > **In plain terms:** This is a private AI setup that runs on my own computer instead of a paid cloud service, so my data stays with me. One half helps me search everything I have built, and the other half helps me study and reach out to new business leads.
 
 ![AI](https://img.shields.io/badge/AI-local%20LLM%20(Ollama)%20%C2%B7%20RAG%20%C2%B7%20MCP-7a5cff)
-![Quality](https://img.shields.io/badge/chat%20quality-61%25%20%E2%86%92%2099%25%20(self--measured)-2ea44f)
+![Quality](https://img.shields.io/badge/chat%20quality-61.5%25%20%E2%86%92%2099.0%25%20(self--measured)-2ea44f)
 ![Stack](https://img.shields.io/badge/stack-Next.js%2015%20%C2%B7%20Ollama%20%C2%B7%20n8n-000000)
 ![Privacy](https://img.shields.io/badge/privacy-100%25%20local-2ea44f)
 ![License](https://img.shields.io/badge/license-proprietary-8a8a8a)
@@ -24,17 +24,17 @@
 
 Two halves of one local-LLM (AI models that run on my own hardware, not a cloud service) workbench I built to run my own company on:
 
-**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **23 of my project roots**, held in a local vector store (LanceDB), with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. The index is a clean, deduplicated rebuild that honors each project's ignore rules. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
+**1. Context Hub**: a semantic index (a search that matches by meaning, not just exact keywords) over **23 of my project roots** (more than **44,000 searchable text chunks** and **339 indexed images**), held in a local vector store (LanceDB), with a force-directed **knowledge graph** (an interactive map of how those projects and topics connect) and an **MCP server** (a standard way for outside AI tools to plug into this data), so any AI agent (or I) can search, ask questions across, and reason over my entire body of work. The index is a clean, deduplicated rebuild that honors each project's ignore rules, and the indexer is hardened with a single-writer lock after I diagnosed and fixed a concurrent-reindex corruption. Fully local embeddings (numeric fingerprints of text that let a computer compare meaning); nothing leaves the machine.
 
-**2. Lead Intelligence Dashboard** (one screen that brings the lead information together): a command-center UI over scanned Southwest-Florida business leads (fed by an upstream n8n pipeline), with **9 local-LLM AI routes** spanning research, outreach drafting, and sales preparation.
+**2. Lead Intelligence Dashboard** (one screen that brings the lead information together): a command-center UI over scanned Southwest-Florida business leads spanning **41 business verticals** (fed by an upstream n8n pipeline), with **9 local-LLM AI routes** spanning research, outreach drafting, and sales preparation.
 
 Feeding the command center is a **self-hosted n8n operations mesh** (Docker plus local Ollama) that runs my back office as governed, human-in-the-loop agents: it classifies billing and vendor issues, grounds and lints outreach drafts before they are ever sent, and watches releases, then files action items back into this dashboard. Every model step runs on local hardware, so there is no cloud inference cost, and the agents draft and flag rather than act on their own.
 
 ## The part I'm proudest of: a ground-truth eval harness
 
-> **In plain terms:** It is easy to get an AI to say something. It is hard to know whether the answer is actually correct. I built an automatic grader that checks the system's answers against known-good ones, which is how quality went from 61% correct to 99% correct.
+> **In plain terms:** It is easy to get an AI to say something. It is hard to know whether the answer is actually correct. I built an automatic grader that checks the system's answers against known-good ones, which is how quality went from 61.5% correct to 99.0% correct.
 
-Anyone can make an LLM answer. The hard problem is knowing whether the answer is *right*, at scale, without reading every one by hand. I built a **ground-truth evaluation harness** that grades the system's answers across 20+ query types, which **lifted chat quality from 61% to 99%** and catches regressions before they ship.
+Anyone can make an LLM answer. The hard problem is knowing whether the answer is *right*, at scale, without reading every one by hand. I built a **ground-truth evaluation harness** that grades the system's answers across 20+ query types, which **lifted chat quality from 61.5% to 99.0%** and catches regressions before they ship.
 
 ## How it's built
 
@@ -47,7 +47,7 @@ flowchart LR
     OPS["n8n ops mesh<br/>(local Ollama, human-in-the-loop)"] --> DASH
     EMB --> HUB["Context Hub:<br/>semantic search · Q&A · knowledge graph · MCP"]
     EMB --> DASH["Lead dashboard:<br/>9 local-LLM AI routes"]
-    HUB --> EVAL["Ground-truth eval harness<br/>(61% → 99%, gates releases)"]
+    HUB --> EVAL["Ground-truth eval harness<br/>(61.5% → 99.0%, gates releases)"]
     DASH --> EVAL
 ```
 
